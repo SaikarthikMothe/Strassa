@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.vscode/
+.DS_Store
+coverage/
+*.log
+.idea/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.swp
+*.swo
+*.bak
+*.tmp
