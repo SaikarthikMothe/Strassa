@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules/
 dist/
 .env
@@ -13,3 +14,7 @@ yarn-error.log*
 *.swo
 *.bak
 *.tmp
+=======
+.env
+node_modules
+>>>>>>> 2fde3d4 (first push)
