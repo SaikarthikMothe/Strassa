@@ -1,20 +1,40 @@
-<<<<<<< HEAD
+# Dependencies
 node_modules/
+*/node_modules/
+
+# Production build outputs
 dist/
+build/
+*/dist/
+
+# Environment files
 .env
-.vscode/
+.env.*
+!.env.example
+*.env
+
+# Operating System Files
 .DS_Store
-coverage/
-*.log
+Thumbs.db
+*.lnk
+
+# Editor directories
+.vscode/
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-*.swp
-*.swo
-*.bak
-*.tmp
-=======
-.env
-node_modules
->>>>>>> 2fde3d4 (first push)
+pnpm-debug.log*
+
+# Testing
+coverage/

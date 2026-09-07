@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 app.use((req, res, next) => {
   console.log(`[${req.method}] ${req.originalUrl}`);
   next();

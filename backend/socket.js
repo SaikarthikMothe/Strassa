@@ -5,10 +5,15 @@ const captainModel = require("./models/captain.model");
 let io;
 
 function initializeSocket(server) {
+  const allowedOrigins = process.env.CLIENT_URL
+    ? [process.env.CLIENT_URL.replace(/\/$/, ""), "http://localhost:5173"]
+    : "*";
+
   io = socketIo(server, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: allowedOrigins,
       methods: ["GET", "POST"],
+      credentials: true,
     },
   });
 
