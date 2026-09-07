@@ -8,21 +8,11 @@ const SocketProvider = ({ children }) => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    // Get user information from localStorage
-    const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("userId");
-    const userType = localStorage.getItem("userType") || "user";
-    
-    if (!token) {
-      console.log("❌ No token found, skipping socket connection");
-      return;
-    }
-
     // Create socket connection
     const socketInstance = io(import.meta.env.VITE_BASE_URL, {
       transports: ["websocket", "polling"],
       auth: {
-        token: token
+        token: localStorage.getItem("token") || ""
       }
     });
 
@@ -30,7 +20,9 @@ const SocketProvider = ({ children }) => {
       console.log("✅ Connected to server:", socketInstance.id);
       setIsConnected(true);
       
-      // 🔥 CRITICAL: Emit join event to save socketId in backend
+      // Emit join event if user already identified
+      const userId = localStorage.getItem("userId");
+      const userType = localStorage.getItem("userType") || "user";
       if (userId) {
         socketInstance.emit("join", { userId, userType });
         console.log(`🚀 Emitted join event: userId=${userId}, userType=${userType}`);
